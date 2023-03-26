@@ -1,13 +1,22 @@
-.mat-card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
   
-  .mat-card-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+}
+
+mat-card {
+  max-width: 450px;
+  width: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
+  margin-left: 0px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-radius: 20px;
+}

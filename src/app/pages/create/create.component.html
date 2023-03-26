@@ -1,26 +1,33 @@
-<!-- <mat-card>
-    <form [formGroup]="formCar"
-    (submit)="saveCar()"
-    >
-      <mat-form-field>
-        <mat-label>Marca</mat-label>
-        <input matInput formControlName="marca">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Modelo</mat-label>
-        <input matInput formControlName="modelo">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Color</mat-label>
-        <input matInput formControlName="color">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Otro campo</mat-label>
-        <input matInput formControlName="otro">
-      </mat-form-field>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">Enviar</button>
-      </mat-card-actions>
-    </form>
+<div class="container">
+  <mat-card>
+    
+    <mat-card-content>
+      <form novalidate (ngSubmit)="onSubmit()" [formGroup]="registerCar">
+        <mat-form-field appearance="fill">
+          <mat-label>Marca:</mat-label>
+          <input matInput formControlName="marca" />
+          <mat-error *ngIf="registerCar.get('marca')?.invalid">
+            La marca es requerido.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Modelo:</mat-label>
+          <input matInput formControlName="modelo" />
+          <mat-error *ngIf="registerCar.get('modelo')?.invalid">
+            El módelo es requerido.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Imagen:</mat-label>
+          <input matInput formControlName="imagen" />
+          <mat-error *ngIf="registerCar.get('imagen')?.invalid">
+            La imagen es requerida.
+          </mat-error>
+        </mat-form-field>
+        <mat-card-content>          
+          <button mat-raised-button color="primary" [disabled]="!registerCar.valid">Enviar</button>        
+        </mat-card-content>
+      </form>
+    </mat-card-content>
   </mat-card>
-   -->
+</div>

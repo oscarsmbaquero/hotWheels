@@ -1,9 +1,8 @@
 
 export interface ICar{
 
-    id: string;
     marca: string;
-    image: string;
+    imagen: string;
     modelo: number;
     // songs:ISong[];
     
