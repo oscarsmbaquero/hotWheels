@@ -19,6 +19,24 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
+          <mat-label>Año:</mat-label>
+          <input matInput formControlName="anio" />
+          <mat-error *ngIf="registerCar.get('anio')?.invalid">
+            Obligatorio y max. 4 dígitos.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de Vehìculo</mat-label>
+          <mat-select disableRipple formControlName="tipo">
+            <mat-option value="4x4">4x4</mat-option>
+            <mat-option value="Berlina">Berlina</mat-option>
+            <mat-option value="Electrico">Eléctrico</mat-option>
+            <mat-option value="Deportivo">Deportivo</mat-option>
+            <mat-option value="MuscleCar">Muscle Car</mat-option>
+            <mat-option value="Emergencias">Emergencias</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Imagen:</mat-label>
           <input matInput formControlName="imagen" />
           <mat-error *ngIf="registerCar.get('imagen')?.invalid">

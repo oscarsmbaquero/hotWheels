@@ -1,9 +1,13 @@
-import { ICar } from '../../core/services/models/cars-models';
+import { ICar } from './../../core/services/models/cars-models';
+import { TypeOfCar } from './../../core/services/models/cars-models';
+
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CarsService } from 'src/app/core/services/cars/cars.service';
+
+
 
 @Component({
   selector: 'app-create',
@@ -39,7 +43,9 @@ export class CreateComponent {
      this.registerCar = this.formBuilder.group({
        marca: ['', [Validators.required, Validators.maxLength(20)]],
        modelo: ['', [Validators.required, Validators.maxLength(20)]],
+       anio: ['', [Validators.required, Validators.maxLength(4)]],
        imagen: ['', [Validators.required, Validators.maxLength(20)]],
+       tipo: ['', [Validators.required]],
      });
   }
  
@@ -55,6 +61,9 @@ export class CreateComponent {
          marca: this.registerCar.get('marca')?.value,
          modelo: this.registerCar.get('modelo')?.value,
          imagen: this.registerCar.get('imagen')?.value,
+         anio: this.registerCar.get('anio')?.value,
+         tipo: this.registerCar.get('tipo')?.value,
+         //  type: this.registerCar.get('type')?.value,
        };
        console.log(car);
        this.carsservice.addCars(car).subscribe(

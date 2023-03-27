@@ -1,16 +1,21 @@
 <div class="row">
-  <div *ngFor="let car of cars" class="col-md-3 col-6 mx-auto">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title>{{ car.marca }}</mat-card-title>
-          <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
-          <!-- <img mat-card-md-image src={{car.imagen}} > -->
-        </mat-card-title-group>
-      </mat-card-header>
+  <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
+    <mat-card class="example-card" style="height: 100%">
       <mat-card-content>
-        <!-- {{longText}} -->
-        <img mat-card-md-image src="{{ car.imagen }} " style="border-radius: 25%;" />
+        <div class="row">
+          <!-- Primera columna: marca, modelo, año y tipo -->
+          <div class="col-6">
+            <mat-card-title>{{ car.marca }}</mat-card-title>
+            <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
+            <p>{{ car.anio }}</p>
+            <p>{{ car.tipo }}</p>
+          </div>
+
+          <!-- Segunda columna: imagen -->
+          <div class="col-6">
+            <img mat-card-md-image src="{{ car.imagen }} " style="border-radius: 25%" />
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
