@@ -14,4 +14,11 @@ export class CarsService {
   public getCars():Observable<ICar[]> {
     return this.httpClient.get<ICar[]>(`${environment.apiUrl}cars`);
   }
+
+  public addCars(body: ICar): Observable<ICar> {
+    return this.httpClient.post<ICar>(
+      `${environment.apiUrl}cars`,
+      body
+    );
+  }
 }

@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { trigger, transition, style, animate } from '@angular/animations';
+import { CarsService } from 'src/app/core/services/cars/cars.service';
 
 @Component({
   selector: 'app-create',
@@ -29,7 +30,10 @@ export class CreateComponent {
   
 
  // Inicializamos FormBuilder en el constructor
- constructor(private formBuilder: FormBuilder) {
+ constructor(
+  private formBuilder: FormBuilder,
+  private carsservice : CarsService ,
+  ) {
     // Nuestro formulario - sin campos por defecto
     // Podemos meter valores por defecto en las comillas
      this.registerCar = this.formBuilder.group({
@@ -53,10 +57,20 @@ export class CreateComponent {
          imagen: this.registerCar.get('imagen')?.value,
        };
        console.log(car);
+       this.carsservice.addCars(car).subscribe(
+        (response) => {
+          console.log('Datos enviados con éxito');
+        },
+        (error) => {
+          console.error('Error al enviar los datos', error);
+        }
+      );
+    }
+    }
        // Reseteamos todos los campos y el indicador de envío o submitted
-       this.registerCar.reset();
-       this.submitted = false;
+      //  this.registerCar.reset();
+      //  this.submitted = false;
      }
-   }
+   
 
-}
+
