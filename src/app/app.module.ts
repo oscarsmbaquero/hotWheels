@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { SearchComponent } from './pages/search/search.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     NavbarComponent,
     ListadoComponent,
     CreateComponent,
-    FooterComponent
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     BrowserAnimationsModule,
     HttpClientModule,
     MatSelectModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
