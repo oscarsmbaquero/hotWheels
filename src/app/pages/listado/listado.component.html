@@ -1,27 +1,37 @@
-<div class="row">
-  <div class="col-11">
-    <app-search></app-search>
-  </div>  
-</div>
-<div class="row">
-  <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
-    <mat-card class="example-card">
-      <mat-card-content>
-        <div class="row">
-          <!-- Primera columna: marca, modelo, año y tipo -->
-          <div class="col-6">
-            <mat-card-title>{{ car.marca }}</mat-card-title>
-            <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
-            <p>{{ car.anio }}</p>
-            <p>{{ car.tipo }}</p>
-          </div>
+<div *ngIf="cars; else loading">
+  <div class="row">
+    <div class="col-11">
+      <app-search></app-search>
+    </div>
+  </div>
 
-          <!-- Segunda columna: imagen -->
-          <div class="col-6">
-            <img mat-card-md-image src="{{ car.imagen }} " style="border-radius: 25%" />
+  <div class="row">
+    <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <div class="row">
+            <!-- Primera columna: marca, modelo, año y tipo -->
+            <div class="col-6">
+              <mat-card-title>{{ car.marca }}</mat-card-title>
+              <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
+              <p>{{ car.anio }}</p>
+              <p>{{ car.tipo }}</p>
+            </div>
+
+            <!-- Segunda columna: imagen -->
+            <div class="col-6">
+              <img
+                mat-card-md-image
+                src="{{ car.imagen }} "
+                style="border-radius: 25%"
+              />
+            </div>
           </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

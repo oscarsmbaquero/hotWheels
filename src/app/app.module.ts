@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//modules
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 //Components
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ListadoComponent } from './pages/listado/listado.component';
@@ -18,7 +21,8 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
 // import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { SearchComponent } from './pages/search/search.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -27,12 +31,14 @@ import {MatIconModule} from '@angular/material/icon';
     ListadoComponent,
     CreateComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
+    CoreModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
