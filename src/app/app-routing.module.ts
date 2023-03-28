@@ -6,8 +6,8 @@ import { ListadoComponent } from './pages/listado/listado.component';
 const routes: Routes = [
   { path: 'list', component: ListadoComponent },
   { path: 'anadir', component: CreateComponent },
-  { path: '', pathMatch:'full', redirectTo:'home'},
-  { path: '**', pathMatch:'full', redirectTo:'home'}
+  { path: '', pathMatch:'full', redirectTo:'list'},
+  { path: '**', pathMatch:'full', redirectTo:'list'}
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { ICar } from './../../core/services/models/cars-models';
-import { TypeOfCar } from './../../core/services/models/cars-models';
+// import { TypeOfCar } from './../../core/services/models/cars-models';
+import { Router } from '@angular/router';
 
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -36,7 +37,8 @@ export class CreateComponent {
  // Inicializamos FormBuilder en el constructor
  constructor(
   private formBuilder: FormBuilder,
-  private carsservice : CarsService ,
+  private carsservice : CarsService,
+  private router: Router,
   ) {
     // Nuestro formulario - sin campos por defecto
     // Podemos meter valores por defecto en las comillas
@@ -46,6 +48,7 @@ export class CreateComponent {
        anio: ['', [Validators.required, Validators.maxLength(4)]],
        imagen: ['', [Validators.required, Validators.maxLength(20)]],
        tipo: ['', [Validators.required]],
+       image: ['', [Validators.required]],
      });
   }
  
@@ -63,6 +66,7 @@ export class CreateComponent {
          imagen: this.registerCar.get('imagen')?.value,
          anio: this.registerCar.get('anio')?.value,
          tipo: this.registerCar.get('tipo')?.value,
+         image: this.registerCar.get('image')?.value,
          //  type: this.registerCar.get('type')?.value,
        };
        console.log(car);
@@ -75,6 +79,7 @@ export class CreateComponent {
         }
       );
     }
+    this.router.navigate(['list']);
     }
        // Reseteamos todos los campos y el indicador de envío o submitted
       //  this.registerCar.reset();

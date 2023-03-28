@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MaterialFileInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
