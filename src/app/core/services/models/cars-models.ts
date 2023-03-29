@@ -2,7 +2,7 @@
 export interface ICar{
     marca: string;
     imagen: string;
-    image:string;
+    image?:string;
     modelo: string;
     anio: number;
     tipo: TypeCar;

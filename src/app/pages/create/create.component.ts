@@ -48,7 +48,7 @@ export class CreateComponent {
        anio: ['', [Validators.required, Validators.maxLength(4)]],
        imagen: ['', [Validators.required, Validators.maxLength(20)]],
        tipo: ['', [Validators.required]],
-       image: ['', [Validators.required]],
+       //image: ['', [Validators.required]],
      });
   }
  
@@ -66,7 +66,7 @@ export class CreateComponent {
          imagen: this.registerCar.get('imagen')?.value,
          anio: this.registerCar.get('anio')?.value,
          tipo: this.registerCar.get('tipo')?.value,
-         image: this.registerCar.get('image')?.value,
+         //image: this.registerCar.get('image')?.value,
          //  type: this.registerCar.get('type')?.value,
        };
        console.log(car);

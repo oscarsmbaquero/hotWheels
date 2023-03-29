@@ -37,7 +37,6 @@ export class ListadoComponent {
       this.carsservice.getCars().pipe(
         map(cars => {
           console.log(cars,38); // log the cars to the console
-          //return cars.filter(car => car.marca.toLowerCase() === textoDigitado.toLowerCase())
           return cars.filter(car => car.marca.toLowerCase().includes(textoDigitado.toLowerCase()))
         })
       ).subscribe(filteredCars => {
