@@ -1,7 +1,8 @@
 <div *ngIf="cars; else loading">
   <div class="row">
     <div class="col-11">
-      <app-search></app-search>
+      <input type="text" (keyup)="capturarTexto($event)">
+      <!-- <app-search></app-search> -->
     </div>
   </div>
 
