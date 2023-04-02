@@ -51,6 +51,25 @@ export class CreateComponent {
        //image: ['', [Validators.required]],
      });
   }
+
+  capturePhoto() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.play();
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const context = canvas.getContext('2d');
+        context?.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/png');
+        console.log(dataUrl);
+      })
+      .catch(error => console.error(error));
+  }
+  
+
  
  //Función accionada al clickar en submit
  public onSubmit(): void {
