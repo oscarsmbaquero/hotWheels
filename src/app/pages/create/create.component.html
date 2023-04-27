@@ -41,14 +41,18 @@
             <mat-option value="Emergencias">Emergencias</mat-option>
           </mat-select>
         </mat-form-field>
-        <button (click)="capturePhoto()">Tomar foto</button>
-        <mat-form-field appearance="fill">
+        <input type="file" 
+               (change)="onFileSelected($event)" 
+               accept="image/*"
+               >
+
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Imagen:</mat-label>
           <input matInput formControlName="imagen" />
           <mat-error *ngIf="registerCar.get('imagen')?.invalid">
             La imagen es requerida.
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-card-content>
           <button
             mat-raised-button

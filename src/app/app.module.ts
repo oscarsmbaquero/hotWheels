@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { CreateComponent } from './pages/create/create.component';
+import { SearchComponent } from './pages/search/search.component';
 //material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,9 +20,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
-// import { MaterialFileInputModule } from 'ngx-material-file-input';
-import { SearchComponent } from './pages/search/search.component';
 import { MatIconModule } from '@angular/material/icon';
+// import { MaterialFileInputModule } from 'ngx-material-file-input';
+
+
 
 
 @NgModule({

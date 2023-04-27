@@ -28,11 +28,14 @@ import { CarsService } from 'src/app/core/services/cars/cars.service';
 })
 export class CreateComponent {
 
+   navigator: any;
+
  // Incialización del formulario
  public registerCar: FormGroup;
  // variable submitted a false
  public submitted: boolean = false;
   
+ selectedFile: File | null = null;
 
  // Inicializamos FormBuilder en el constructor
  constructor(
@@ -46,28 +49,28 @@ export class CreateComponent {
        marca: ['', [Validators.required, Validators.maxLength(20)]],
        modelo: ['', [Validators.required, Validators.maxLength(20)]],
        anio: ['', [Validators.required, Validators.maxLength(4)]],
-       imagen: ['', [Validators.required, Validators.maxLength(20)]],
+       //imagen: ['', [Validators.required, Validators.maxLength(20)]],
        tipo: ['', [Validators.required]],
+       imagen:[''],
        //image: ['', [Validators.required]],
      });
   }
 
-  capturePhoto() {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        const video = document.createElement('video');
-        video.srcObject = stream;
-        video.play();
-        const canvas = document.createElement('canvas');
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const context = canvas.getContext('2d');
-        context?.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL('image/png');
-        console.log(dataUrl);
-      })
-      .catch(error => console.error(error));
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file,61);
+    this.registerCar.get('imagen')?.setValue(file);
+    console.log(this.registerCar.get('imagen')?.value,63);
+    console.log( this.registerCar.value.imagen.name ,64);
+    // const formData = new FormData();
+    // formData.append('file', file, file.name);
+    // this.registerCar.patchValue({ imagen: formData });
+    
+    //this.registerCar.patchValue({ imagen: file });
   }
+  
+  
+  
   
 
  
@@ -82,13 +85,14 @@ export class CreateComponent {
          
          marca: this.registerCar.get('marca')?.value,
          modelo: this.registerCar.get('modelo')?.value,
-         imagen: this.registerCar.get('imagen')?.value,
+         //imagen: this.registerCar.get('imagen')?.value,
          anio: this.registerCar.get('anio')?.value,
          tipo: this.registerCar.get('tipo')?.value,
-         //image: this.registerCar.get('image')?.value,
+         imagen: this.registerCar.get('imagen')?.value,
+         
          //  type: this.registerCar.get('type')?.value,
        };
-       console.log(car);
+       console.log(car,94);
        this.carsservice.addCars(car).subscribe(
         (response) => {
           console.log('Datos enviados con éxito');

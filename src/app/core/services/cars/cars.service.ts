@@ -16,9 +16,16 @@ export class CarsService {
   }
 
   public addCars(body: ICar): Observable<ICar> {
+    const formData = new FormData();
+    formData.append('marca', body.marca);
+    formData.append('modelo', body.modelo);
+    formData.append('anio', body.anio.toString());
+    formData.append('tipo', body.tipo);
+    formData.append('imagen', body.imagen, 'imagen.png');
+    // console.log(body,'servicio cars');
     return this.httpClient.post<ICar>(
       `${environment.apiUrl}cars`,
-      body
+      formData
     );
   }
  
