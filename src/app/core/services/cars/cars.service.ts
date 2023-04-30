@@ -15,6 +15,10 @@ export class CarsService {
     return this.httpClient.get<ICar[]>(`${environment.apiUrl}cars`);
   }
 
+  public updateCar(id: string, body: ICar): Observable<ICar> {
+    return this.httpClient.put<ICar>(`${environment.apiUrl}cars/${id}`, body);
+  }
+
   public addCars(body: ICar): Observable<ICar> {
     const formData = new FormData();
     formData.append('marca', body.marca);

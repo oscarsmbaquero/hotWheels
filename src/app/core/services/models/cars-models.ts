@@ -1,5 +1,7 @@
 
 export interface ICar{
+    _id?: any;
+    favorite?: boolean;
     marca: string;
     imagen: string;
     imagenUrl?:string;
@@ -17,8 +19,6 @@ export interface ICar{
     "emergencias" = "emergencias"
 }
 export const TypeOfCar = Object.values(TypeCar);
-// export interface ISong{
-//     title:string
-// }
+
 
 
