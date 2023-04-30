@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatIconModule } from '@angular/material/icon';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
 // import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
@@ -34,6 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
     CreateComponent,
     FooterComponent,
     SearchComponent,
+    FavoriteComponent,
   ],
   imports: [
     BrowserModule,

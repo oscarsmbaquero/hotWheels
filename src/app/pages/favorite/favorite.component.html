@@ -1,0 +1,60 @@
+<div *ngIf="cars; else loading">
+    <div class="row">
+      <div class="col-11">
+        <div class="search-container">
+          <input
+            type="text"
+            (keyup)="capturarTexto($event)"
+            class="input"
+            placeholder="Buscar..."
+          />
+          <i class="fa fa-search search-icon"></i>
+        </div>
+        <!-- <input type="text" (keyup)="capturarTexto($event)" class="input" placeholder="Buscar..."> -->
+        <!-- <app-search></app-search> -->
+      </div>
+    </div>
+  
+    <div class="row">
+      <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
+        <mat-card class="example-card">
+          <mat-card-content>
+            <div class="row">
+              <!-- Primera columna: marca, modelo, año y tipo -->
+              <div class="col-6">
+                <mat-card-title>{{ car.marca }}</mat-card-title>
+                <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
+                <p>{{ car.anio }}</p>
+                <p>{{ car.tipo }}</p>
+                <div *ngIf="car.favorite; else Notfavorite">
+                  <button (click)="favorite(car._id)" class="button">
+                    <span class="material-icons" style="color: rgb(255, 0, 0)">favorite</span>
+                  </button>
+                </div>
+                <ng-template #Notfavorite>
+                  <div>
+                    <button (click)="favorite(car._id)" class="button">
+                      <span class="material-icons" style="color: rgb(192, 181, 181)">favorite</span>
+                    </button>
+                  </div>
+                </ng-template>
+                
+            </div>
+              <!-- Segunda columna: imagen -->
+              <div class="col-6">
+                <img
+                  mat-card-md-image
+                  src="{{ car.imagenUrl }} "
+                  style="border-radius: 25%"
+                />
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+  

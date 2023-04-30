@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroment/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,13 @@ export class CarsService {
       formData
     );
   }
- 
+
+  getNumberFavoriteCars(): Observable<number> {
+    return this.httpClient.get<ICar[]>(`${environment.apiUrl}cars`).pipe(
+      map(cars => cars.filter(car => car.favorite === true)),
+      map(favoriteCars => favoriteCars.length)
+      
+    );
+  }
+  
 }
