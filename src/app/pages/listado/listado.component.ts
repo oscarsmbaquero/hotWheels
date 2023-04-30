@@ -2,6 +2,7 @@ import { ICar } from './../../core/services/models/cars-models';
 import { Component } from '@angular/core';
 import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
+import { FavoriteCarsCountService } from '../../core/services/number-favorite.service';
 
 @Component({
   selector: 'app-listado',
@@ -15,6 +16,7 @@ export class ListadoComponent {
 
   constructor(
     private carsservice : CarsService ,
+    private favoriteCarsCountService: FavoriteCarsCountService
     
   ) { }
   ngOnInit(): void {
@@ -114,7 +116,7 @@ export class ListadoComponent {
           console.log('Car updated:', updatedCar);
           this.carsservice.getNumberFavoriteCars().subscribe(count => {
             this.favoriteCarsCount = count;
-            
+            this.favoriteCarsCountService.updateFavoriteCarsCount(this.favoriteCarsCount);
             console.log(this.favoriteCarsCount, 1174)
           });
         });
@@ -125,6 +127,7 @@ export class ListadoComponent {
           this.getCars()
           this.carsservice.getNumberFavoriteCars().subscribe(count => {
             this.favoriteCarsCount = count;
+            this.favoriteCarsCountService.updateFavoriteCarsCount(this.favoriteCarsCount);
             console.log(this.favoriteCarsCount, 24)
           });
         });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsService } from '../../services/cars/cars.service';
+import { FavoriteCarsCountService } from '../../services/number-favorite.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -7,14 +8,19 @@ import { CarsService } from '../../services/cars/cars.service';
   ]
 })
 export class NavbarComponent implements OnInit {
+  favoriteCarsCount: number = 0;
   
   constructor(
+    private favoriteCarsCountService: FavoriteCarsCountService,
   ) { }
 
-ngOnInit() {
-  
-  
-}
+  ngOnInit() {
+    this.favoriteCarsCountService.getFavoriteCarsCount().subscribe(count => {
+      this.favoriteCarsCount = count;
+    });
+    console.log(this.favoriteCarsCount, 'navbar');
+    
+  }
 }
   
 
