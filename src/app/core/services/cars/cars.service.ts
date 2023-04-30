@@ -1,7 +1,7 @@
 import { ICar } from '../models/cars-models'
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/enviroment/environment';
 import { map } from 'rxjs/operators';
 
@@ -9,6 +9,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CarsService {
+  private favoriteCars: string[] = [];
+  private favoriteCarsSubject = new BehaviorSubject<string[]>([]);
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,6 +21,19 @@ export class CarsService {
 
   public updateCar(id: string, body: ICar): Observable<ICar> {
     return this.httpClient.put<ICar>(`${environment.apiUrl}cars/${id}`, body);
+  }
+  getFavoriteCars() {
+    return this.favoriteCarsSubject.asObservable();
+  }
+
+  toggleFavoriteCar(carId: string) {
+    const index = this.favoriteCars.indexOf(carId);
+    if (index !== -1) {
+      this.favoriteCars.splice(index, 1);
+    } else {
+      this.favoriteCars.push(carId);
+    }
+    this.favoriteCarsSubject.next(this.favoriteCars);
   }
   
 

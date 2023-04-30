@@ -7,17 +7,13 @@ import { CarsService } from '../../services/cars/cars.service';
   ]
 })
 export class NavbarComponent implements OnInit {
-  favoriteCarsCount: number =0;
+  
   constructor(
-    private carsservice : CarsService ,
   ) { }
 
 ngOnInit() {
   
-  this.carsservice.getNumberFavoriteCars().subscribe(count =>   {
-    this.favoriteCarsCount = count;
-  });
-  console.log(this.favoriteCarsCount, 28)
+  
 }
 }
   
