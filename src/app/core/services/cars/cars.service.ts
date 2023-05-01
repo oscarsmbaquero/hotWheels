@@ -26,15 +26,15 @@ export class CarsService {
     return this.favoriteCarsSubject.asObservable();
   }
 
-  toggleFavoriteCar(carId: string) {
-    const index = this.favoriteCars.indexOf(carId);
-    if (index !== -1) {
-      this.favoriteCars.splice(index, 1);
-    } else {
-      this.favoriteCars.push(carId);
-    }
-    this.favoriteCarsSubject.next(this.favoriteCars);
-  }
+  // toggleFavoriteCar(carId: string) {
+  //   const index = this.favoriteCars.indexOf(carId);
+  //   if (index !== -1) {
+  //     this.favoriteCars.splice(index, 1);
+  //   } else {
+  //     this.favoriteCars.push(carId);
+  //   }
+  //   this.favoriteCarsSubject.next(this.favoriteCars);
+  // }
   
 
   public addCars(body: ICar): Observable<ICar> {
@@ -58,5 +58,10 @@ export class CarsService {
       
     );
   }
+  setNumberFavoriteCars(count: number): Observable<any> {
+    const body = { favoriteCount: count };
+    return this.httpClient.put(`${environment.apiUrl}cars/favoriteCount`, body);
+  }
+  
   
 }

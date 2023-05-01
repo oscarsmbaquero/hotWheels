@@ -8,14 +8,7 @@ import { CarsService } from './cars/cars.service';
 export class FavoriteCarsCountService {
   private _favoriteCarsCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-  constructor(private carsService: CarsService) {
-    this.carsService.getFavoriteCars().subscribe(favoriteCars => {
-      this._favoriteCarsCount.next(favoriteCars.length);
-    });
-  }
-
   updateFavoriteCarsCount(count: number) {
-    console.log(count, 11)
     this._favoriteCarsCount.next(count);
   }
 

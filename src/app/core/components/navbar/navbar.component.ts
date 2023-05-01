@@ -12,13 +12,19 @@ export class NavbarComponent implements OnInit {
   
   constructor(
     private favoriteCarsCountService: FavoriteCarsCountService,
+    private carsService: CarsService
   ) { }
 
   ngOnInit() {
+    this.carsService.getNumberFavoriteCars().subscribe(count => {
+      this.favoriteCarsCount = count;
+      console.log(this.favoriteCarsCount, 'navbar');
+    });
     this.favoriteCarsCountService.getFavoriteCarsCount().subscribe(count => {
       this.favoriteCarsCount = count;
+      console.log(this.favoriteCarsCount, 'navbar');
     });
-    console.log(this.favoriteCarsCount, 'navbar');
+    
     
   }
 }

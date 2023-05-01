@@ -23,32 +23,12 @@ export class ListadoComponent {
     this.getCars();//lanzo la función al iniciar 
     this.carsservice.getNumberFavoriteCars().subscribe(count =>   {
       this.favoriteCarsCount = count;
-      console.log(this.favoriteCarsCount, 24)
     });
     this.carsservice.getFavoriteCars().subscribe(favoriteCars => {
       this.favoriteCarsCount = favoriteCars.length;
     });
-  
   }
-  // onChanges() {
-  //   this.carsservice.getNumberFavoriteCars().subscribe(count =>   {
-  //     this.favoriteCarsCount = count;
-  //     console.log(this.favoriteCarsCount, 27)
-  //   });
-  //   console.log(this.favoriteCarsCount, 28)
-  // }
-  //  private getCars() {
-  //   this.carsservice.getCars().subscribe((cars) => {
-  //     this.cars = cars;
-  //   });
-  // }
   
-  // capturarTexto(event: any) {
-  //   let textoDigitado = event.target.value;
-  //   console.log(textoDigitado);
-  // }
-
-  // 
   private getCars(textoDigitado?: string) {
     if (textoDigitado) {
       this.carsservice.getCars().pipe(
@@ -61,7 +41,6 @@ export class ListadoComponent {
       });
     } else {
       this.carsservice.getCars().subscribe(cars => {
-        console.log(cars,46); // log the cars to the console
         this.cars = cars;
       });
     }
@@ -72,63 +51,25 @@ export class ListadoComponent {
     console.log(textoDigitado,5445454);
     this.getCars(textoDigitado);
   }
-  // favorite(id: string) {
-  //   console.log('favorite', id);
-  //   const car = this.cars?.find(car => car._id === id); // buscar el objeto con el ID correspondiente
-  //   if (car) { // si se encontró el objeto
-  //     console.log('Si');
-  //     car.favorite = true; // cambiar su propiedad "favorite" a true
-  //     this.carsservice.updateCar(id, car).subscribe(updatedCar => {
-  //       console.log('Car updated:', updatedCar); // log del objeto actualizado
-  //       // Aquí puedes hacer algo adicional con el objeto actualizado, como actualizar la lista de favoritos en la interfaz de usuario
-  //     });
-  //   }
-  // }
-  // favorite(id: string) {
-  //   console.log('favorite', id);
-  //   const car = this.cars?.find(car => car._id === id); // buscar el objeto con el ID correspondiente
-  //   if (car) { // si se encontró el objeto
-  //     console.log('Si');
-  //     if (car.favorite === true) { // si la propiedad "favorite" es true, cambiarla a false
-  //       car.favorite = false;
-  //       this.carsservice.updateCar(id, car).subscribe(updatedCar => {
-  //         console.log('Car updated:', updatedCar); // log del objeto actualizado
-  //         // Aquí puedes hacer algo adicional con el objeto actualizado, como actualizar la lista de favoritos en la interfaz de usuario
-  //       });
-  //     } else { // si la propiedad "favorite" es false, cambiarla a true
-  //       car.favorite = true;
-  //       this.carsservice.updateCar(id, car).subscribe(updatedCar => {
-  //         console.log('Car updated:', updatedCar); // log del objeto actualizado
-  //         this.getCars()
-  //       });
-  //     }
-  //   }
-    
-  // }
+
   favorite(id: string) {
-    console.log('favorite', id);
     const car = this.cars?.find(car => car._id === id);
     if (car) {
-      console.log('Si');
       if (car.favorite === true) {
         car.favorite = false;
         this.carsservice.updateCar(id, car).subscribe(updatedCar => {
-          console.log('Car updated:', updatedCar);
           this.carsservice.getNumberFavoriteCars().subscribe(count => {
             this.favoriteCarsCount = count;
             this.favoriteCarsCountService.updateFavoriteCarsCount(this.favoriteCarsCount);
-            console.log(this.favoriteCarsCount, 1174)
           });
         });
       } else {
         car.favorite = true;
         this.carsservice.updateCar(id, car).subscribe(updatedCar => {
-          console.log('Car updated:', updatedCar);
           this.getCars()
           this.carsservice.getNumberFavoriteCars().subscribe(count => {
             this.favoriteCarsCount = count;
             this.favoriteCarsCountService.updateFavoriteCarsCount(this.favoriteCarsCount);
-            console.log(this.favoriteCarsCount, 24)
           });
         });
       }
