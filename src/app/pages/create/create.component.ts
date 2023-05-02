@@ -7,6 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CarsService } from 'src/app/core/services/cars/cars.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -42,6 +43,7 @@ export class CreateComponent {
   private formBuilder: FormBuilder,
   private carsservice : CarsService,
   private router: Router,
+  private snackBar: MatSnackBar
   ) {
     // Nuestro formulario - sin campos por defecto
     // Podemos meter valores por defecto en las comillas
@@ -96,13 +98,17 @@ export class CreateComponent {
        this.carsservice.addCars(car).subscribe(
         (response) => {
           console.log('Datos enviados con éxito');
+          this.snackBar.open('El coche ha sido añadido correctamente', 'Cerrar', {
+            duration: 3000
+          });
+          this.router.navigate(['list']);
         },
         (error) => {
           console.error('Error al enviar los datos', error);
         }
       );
     }
-    this.router.navigate(['list']);
+   
     }
        // Reseteamos todos los campos y el indicador de envío o submitted
       //  this.registerCar.reset();

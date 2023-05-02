@@ -22,6 +22,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatIconModule } from '@angular/material/icon';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
@@ -50,6 +51,7 @@ import { FavoriteComponent } from './pages/favorite/favorite.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatSelectModule,
+    MatSnackBarModule,
     //MaterialFileInputModule,
     MatIconModule
   ],
