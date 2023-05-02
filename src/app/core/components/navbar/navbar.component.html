@@ -20,13 +20,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/list">Listado</a>
+        <a class="nav-link" routerLink="/list" data-toggle="collapse" data-target=".navbar-collapse.show">Listado</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/anadir">Añadir</a>
+        <a class="nav-link" routerLink="/anadir" data-toggle="collapse" data-target=".navbar-collapse.show">Añadir</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/favorite">Favoritos<span class="badge badge-primary">{{ favoriteCarsCount }}</span></a>
+        <a class="nav-link" routerLink="/favorite" data-toggle="collapse" data-target=".navbar-collapse.show">Favoritos<span class="badge badge-primary">{{ favoriteCarsCount }}</span></a>
         
       </li>
       <li class="nav-item">
