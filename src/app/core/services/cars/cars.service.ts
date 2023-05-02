@@ -25,26 +25,13 @@ export class CarsService {
   getFavoriteCars() {
     return this.favoriteCarsSubject.asObservable();
   }
-
-  // toggleFavoriteCar(carId: string) {
-  //   const index = this.favoriteCars.indexOf(carId);
-  //   if (index !== -1) {
-  //     this.favoriteCars.splice(index, 1);
-  //   } else {
-  //     this.favoriteCars.push(carId);
-  //   }
-  //   this.favoriteCarsSubject.next(this.favoriteCars);
-  // }
-  
-
   public addCars(body: ICar): Observable<ICar> {
     const formData = new FormData();
     formData.append('marca', body.marca);
     formData.append('modelo', body.modelo);
     formData.append('anio', body.anio.toString());
     formData.append('tipo', body.tipo);
-    formData.append('imagen', body.imagen, 'imagen.png');
-    // console.log(body,'servicio cars');
+    formData.append('imagen', body.imagen);
     return this.httpClient.post<ICar>(
       `${environment.apiUrl}cars`,
       formData

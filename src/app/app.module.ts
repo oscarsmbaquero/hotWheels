@@ -13,6 +13,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { CreateComponent } from './pages/create/create.component';
 import { SearchComponent } from './pages/search/search.component';
+
 //material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
