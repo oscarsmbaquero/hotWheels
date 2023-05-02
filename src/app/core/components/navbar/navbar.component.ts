@@ -24,22 +24,25 @@ export class NavbarComponent implements OnInit {
       this.favoriteCarsCount = count;
       console.log(this.favoriteCarsCount, 'navbar');
     });
-    // this.favoriteCarsCountService.getFavoriteCarsCount().subscribe(count => {
-    //   this.favoriteCarsCount = count;
-    //   console.log(this.favoriteCarsCount, 'navbar');
-    // });
-    this.userActive =localStorage.getItem('currentUser');
-    // this.usersService.getCurrentUser().subscribe(user => {
-    //   this.userActive = user;
-    //   console.log(this.userActive, 'navbar');
-    // });    
+    this.favoriteCarsCountService.getFavoriteCarsCount().subscribe(count => {
+      this.favoriteCarsCount = count;
+      console.log(this.favoriteCarsCount, 'navbar');
+    });
+  //  this.userActive =localStorage.getItem('currentUser');
+    this.usersService.getCurrentUser().subscribe(user => {
+      this.userActive = user;
+      console.log(this.userActive, 'navbar');
+    });    
   }
   
+  
+  
   logout(): void {
-    localStorage.removeItem('currentUser');
-    this.userActive = null;
-     //this.usersService.logout();
+    // localStorage.removeItem('currentUser');
+    //this.userActive = null;
+     this.usersService.logout();
   }
+  
 }
   
 

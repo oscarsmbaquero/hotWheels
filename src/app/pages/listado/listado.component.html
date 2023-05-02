@@ -26,20 +26,62 @@
               <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
               <p>{{ car.anio }}</p>
               <p>{{ car.tipo }}</p>
-              <div *ngIf="car.favorite; else Notfavorite">
-                <button (click)="favorite(car._id)" class="button">
-                  <span class="material-icons" style="color: rgb(255, 0, 0)">favorite</span>
-                </button>
-              </div>
-              <ng-template #Notfavorite>
-                <div>
+              <div *ngIf="userActive" class="d-flex align-items-center">
+                <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
                   <button (click)="favorite(car._id)" class="button">
-                    <span class="material-icons" style="color: rgb(192, 181, 181)">favorite</span>
+                    <span class="material-icons" style="color: rgb(255, 0, 0)"
+                      >favorite</span
+                    >
                   </button>
                 </div>
-              </ng-template>
-              
-          </div>
+                <ng-template #Notfavorite>
+                  <div class="mr-3">
+                    <button (click)="favorite(car._id)" class="button">
+                      <span
+                        class="material-icons"
+                        style="color: rgb(192, 181, 181)"
+                        >favorite</span
+                      >
+                    </button>
+                  </div>
+                </ng-template>
+                <div class="mr-3">
+                  <span class="material-icons" style="color: #f5f516"
+                    >delete</span
+                  >
+                </div>
+                <div class="mr-3">
+                  <span class="material-icons" style="color: #2196f3"
+                    >edit</span
+                  >
+                </div>
+              </div>
+
+              <!-- <div *ngIf="userActive">
+                <div *ngIf="car.favorite; else Notfavorite">
+                  <button (click)="favorite(car._id)" class="button">
+                    <span class="material-icons" style="color: rgb(255, 0, 0)"
+                      >favorite</span
+                    >
+                  </button>
+                </div>
+                <ng-template #Notfavorite>
+                  <div>
+                    <button (click)="favorite(car._id)" class="button">
+                      <span
+                        class="material-icons"
+                        style="color: rgb(192, 181, 181)"
+                        >favorite</span
+                      >
+                    </button>
+                  </div>
+                </ng-template>
+                <div>
+                  <i class="fas fa-trash" style="color: rgb(255, 0, 0)"></i>
+                </div>
+                
+              </div> -->
+            </div>
             <!-- Segunda columna: imagen -->
             <div class="col-6">
               <img

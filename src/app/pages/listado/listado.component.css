@@ -43,3 +43,7 @@ input[type="text"] {
   border:none;
   background-color: transparent;
 }
+.trash-icon {
+  color: rgb(255, 0, 0);
+  font-size: 18px; /* ajusta el tamaño a tu gusto */
+}

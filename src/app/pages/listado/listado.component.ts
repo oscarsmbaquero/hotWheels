@@ -1,8 +1,10 @@
+import { UsersService } from './../../core/services/users/users.service';
 import { ICar } from './../../core/services/models/cars-models';
 import { Component } from '@angular/core';
 import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
 import { FavoriteCarsCountService } from '../../core/services/number-favorite.service';
+
 
 @Component({
   selector: 'app-listado',
@@ -13,10 +15,12 @@ export class ListadoComponent {
 
   public cars?: ICar[];
   favoriteCarsCount: number =0;
+  userActive: any;
 
   constructor(
     private carsservice : CarsService ,
-    private favoriteCarsCountService: FavoriteCarsCountService
+    private favoriteCarsCountService: FavoriteCarsCountService,
+    private usersService: UsersService,
     
   ) { }
   ngOnInit(): void {
@@ -27,7 +31,12 @@ export class ListadoComponent {
     this.carsservice.getFavoriteCars().subscribe(favoriteCars => {
       this.favoriteCarsCount = favoriteCars.length;
     });
+    this.usersService.getCurrentUser().subscribe(user => {
+      this.userActive = user;
+      console.log(this.userActive, 'navbar');
+    });  
   }
+  
   
   private getCars(textoDigitado?: string) {
     if (textoDigitado) {

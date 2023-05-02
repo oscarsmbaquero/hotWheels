@@ -16,12 +16,11 @@ export class UsersService {
 
   login(credentials: { user: string, password: string }): Observable<boolean> {
     const endpoint = `${environment.apiUrl}users/login`;
-
     return this.httpClient.post<IUser>(endpoint, credentials).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('currentUser', JSON.stringify(user.user));
-          // this.currentUser.next(user);
+          //localStorage.setItem('currentUser', JSON.stringify(user.user));
+          this.currentUser.next(user);
           console.log(this.currentUser.value,24)
           return true;
         } else {
@@ -34,8 +33,8 @@ export class UsersService {
   getCurrentUser(): Observable<IUser | null> {
     return this.currentUser.asObservable();
   }
-  // logout(): void {
-  //   localStorage.removeItem('currentUser');
-  //   this.currentUser.next(null);
-  // }
+  logout(): void {
+    //localStorage.removeItem('currentUser');
+    // this.currentUser.next(null);
+  }
 }
