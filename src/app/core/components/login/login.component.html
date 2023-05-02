@@ -11,8 +11,8 @@
         <form novalidate (ngSubmit)="onSubmit()" [formGroup]="loginUser">
           <mat-form-field appearance="fill">
             <mat-label>Usuario:</mat-label>
-            <input matInput formControlName="usuario" />
-            <mat-error *ngIf="loginUser.get('usuario')?.invalid">
+            <input matInput formControlName="user" />
+            <mat-error *ngIf="loginUser.get('user')?.invalid">
               El usuario es requerido.
             </mat-error>
           </mat-form-field>

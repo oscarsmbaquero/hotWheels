@@ -14,13 +14,15 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(credentials: { email: string, password: string }): Observable<boolean> {
+  login(credentials: { user: string, password: string }): Observable<boolean> {
     const endpoint = `${environment.apiUrl}users/login`;
 
     return this.httpClient.post<IUser>(endpoint, credentials).pipe(
       map(user => {
         if (user) {
-          this.currentUser.next(user);
+          localStorage.setItem('currentUser', JSON.stringify(user.user));
+          // this.currentUser.next(user);
+          console.log(this.currentUser.value,24)
           return true;
         } else {
           return false;
@@ -32,4 +34,8 @@ export class UsersService {
   getCurrentUser(): Observable<IUser | null> {
     return this.currentUser.asObservable();
   }
+  // logout(): void {
+  //   localStorage.removeItem('currentUser');
+  //   this.currentUser.next(null);
+  // }
 }
