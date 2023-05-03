@@ -7,21 +7,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-  private currentUser: BehaviorSubject<IUser | null> = new BehaviorSubject<IUser | null>(null);
+  private currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  public currentUser$: Observable<IUser | null>;
 
-  constructor(private httpClient: HttpClient) { }
-
-  login(credentials: { user: string, password: string }): Observable<boolean> {
+  constructor(private httpClient: HttpClient) {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.currentUserSubject.next(JSON.parse(storedUser));
+    }
+    this.currentUser$ = this.currentUserSubject.asObservable();
+  }
+  login(credentials: { user: string; password: string }): Observable<boolean> {
     const endpoint = `${environment.apiUrl}users/login`;
     return this.httpClient.post<IUser>(endpoint, credentials).pipe(
-      map(user => {
+      map((user) => {
         if (user) {
-          //localStorage.setItem('currentUser', JSON.stringify(user.user));
-          this.currentUser.next(user);
-          console.log(this.currentUser.value,24)
+          this.currentUserSubject.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
           return true;
         } else {
           return false;
@@ -31,10 +36,16 @@ export class UsersService {
   }
 
   getCurrentUser(): Observable<IUser | null> {
-    return this.currentUser.asObservable();
+    return this.currentUserSubject.asObservable();
   }
-  logout(): void {
-    //localStorage.removeItem('currentUser');
-    // this.currentUser.next(null);
+
+  setCurrentUser(user: IUser) {
+    this.currentUserSubject.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  clearCurrentUser() {
+    this.currentUserSubject.next(null);
+    localStorage.removeItem('user');
   }
 }
