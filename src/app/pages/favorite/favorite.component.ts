@@ -2,7 +2,7 @@ import { ICar } from './../../core/services/models/cars-models';
 import { Component } from '@angular/core';
 import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
-import { FavoriteCarsCountService } from '../../core/services/number-favorite.service';
+import { FavoriteCarsCountService } from '../../core/services/numberFavorite/number-favorite.service';
 
 @Component({
   selector: 'app-favorite',
