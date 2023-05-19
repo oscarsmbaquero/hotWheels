@@ -18,6 +18,11 @@ export class CarsService {
   public getCars():Observable<ICar[]> {
     return this.httpClient.get<ICar[]>(`${environment.apiUrl}cars`);
   }
+  public deleteAlbum(id: string): Observable<ICar> {
+    return this.httpClient.delete<ICar>( `${environment.apiUrl}cars/${id}`);
+  }
+
+ 
 
   public updateCar(id: string, body: ICar): Observable<ICar> {
     return this.httpClient.put<ICar>(`${environment.apiUrl}cars/${id}`, body);

@@ -46,15 +46,18 @@
                   </div>
                 </ng-template>
                 <div class="mr-3">
-                  <span class="material-icons" style="color: #f5f516"
+                  <button class="button" (click)="delete()">
+                    <span class="material-icons" style="color: #f5f516"
                     >delete</span
                   >
+                  </button>
+                  
                 </div>
-                <div class="mr-3">
+                <!-- <div class="mr-3">
                   <span class="material-icons" style="color: #2196f3"
                     >edit</span
                   >
-                </div>
+                </div> -->
               </div>
 
               <!-- <div *ngIf="userActive">

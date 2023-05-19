@@ -85,7 +85,9 @@ export class ListadoComponent {
     }
   }
 
-  
+delete(){
+  console.log('delete');
+}  
   
   
   
