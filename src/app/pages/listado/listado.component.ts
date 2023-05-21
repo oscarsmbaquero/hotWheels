@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { UsersService } from './../../core/services/users/users.service';
 import { ICar } from './../../core/services/models/cars-models';
 import { Component } from '@angular/core';
 import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
 import { FavoriteCarsCountService } from '../../core/services/numberFavorite/number-favorite.service';
+
 
 
 @Component({
@@ -21,7 +23,8 @@ export class ListadoComponent {
     private carsservice : CarsService ,
     private favoriteCarsCountService: FavoriteCarsCountService,
     private usersService: UsersService,
-    
+    private router: Router,    
+
   ) { }
   ngOnInit(): void {
     this.getCars();//lanzo la función al iniciar 
@@ -85,10 +88,27 @@ export class ListadoComponent {
     }
   }
 
-delete(){
-  console.log('delete');
-}  
+// delete(id:string){
+//   this.carsservice.deleteCar(id).subscribe((response)=>{
+//     console.log(response)
+    
+//   });
+//   this.router.navigate(['home']);
+// }  
   
+
+delete(id: string): void {
+  const confirmation = window.confirm('¿Estás seguro de que deseas eliminar este coche?');
+
+  if (confirmation) {
+    this.carsservice.deleteCar(id).subscribe((response) => {
+      console.log(response);
+      this.router.navigate(['home']);
+    });
+  }
+}
+}
+
   
   
   
@@ -105,4 +125,4 @@ delete(){
   
   
   
-}
+
