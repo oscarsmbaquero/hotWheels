@@ -38,7 +38,6 @@ export class ListadoComponent {
     });
     this.usersService.getCurrentUser().subscribe(user => {
       this.userActive = user;
-      console.log(this.userActive, 'navbar');
     });  
   }
   
@@ -47,7 +46,6 @@ export class ListadoComponent {
     if (textoDigitado) {
       this.carsservice.getCars().pipe(
         map(cars => {
-          console.log(cars,38); // log the cars to the console
           return cars.filter(car => car.marca.toLowerCase().includes(textoDigitado.toLowerCase()))
         })
       ).subscribe(filteredCars => {
@@ -62,7 +60,6 @@ export class ListadoComponent {
   
   capturarTexto(event: any) {
     let textoDigitado = event.target.value;
-    console.log(textoDigitado,5445454);
     this.getCars(textoDigitado);
   }
 
