@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
 import { FavoriteCarsCountService } from '../../core/services/numberFavorite/number-favorite.service';
+import { Location } from '@angular/common';
 
 
 
@@ -24,6 +25,7 @@ export class ListadoComponent {
     private favoriteCarsCountService: FavoriteCarsCountService,
     private usersService: UsersService,
     private router: Router,    
+    private location: Location
 
   ) { }
   ngOnInit(): void {
@@ -103,9 +105,11 @@ delete(id: string): void {
   if (confirmation) {
     this.carsservice.deleteCar(id).subscribe((response) => {
       console.log(response);
-      this.router.navigate(['home']);
+      window.location.reload(); // Refrescar la página actual      
     });
   }
+  
+  
 }
 }
 
