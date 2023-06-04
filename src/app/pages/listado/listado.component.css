@@ -57,3 +57,11 @@ input[type="text"] {
 .image :hover{
   width: 60px;
 }
+.example-card .image {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.example-card.imagen-grande .image {
+  width: 200%;
+}

@@ -10,14 +10,11 @@
         />
         <i class="fa fa-search search-icon"></i>
       </div>
-      <!-- <input type="text" (keyup)="capturarTexto($event)" class="input" placeholder="Buscar..."> -->
-      <!-- <app-search></app-search> -->
     </div>
   </div>
-
   <div class="row">
     <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
-      <mat-card class="example-card">
+      <mat-card class="example-card"  [ngStyle]="{ 'transform': tarjetaSeleccionada === car ? 'scale(1.1)' : 'scale(1)' }" (click)="hacerImagenGrande(car)">
         <mat-card-content>
           <div class="row">
             <!-- Primera columna: marca, modelo, año y tipo -->

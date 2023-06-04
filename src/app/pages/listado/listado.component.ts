@@ -19,6 +19,9 @@ export class ListadoComponent {
   public cars?: ICar[];
   favoriteCarsCount: number =0;
   userActive: any;
+  imagenGrande: boolean = false;
+  carSelected: any = null;
+  tarjetaSeleccionada: any = null;
 
   constructor(
     private carsservice : CarsService ,
@@ -105,10 +108,16 @@ delete(id: string): void {
       window.location.reload(); // Refrescar la página actual      
     });
   }
-  
-  
+}
+hacerImagenGrande(car:ICar){
+  if (this.tarjetaSeleccionada === car) {
+    this.tarjetaSeleccionada = null; // Volver al tamaño original
+  } else {
+    this.tarjetaSeleccionada = car; // Ampliar la tarjeta seleccionada
+  }
 }
 }
+
 
   
   

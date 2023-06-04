@@ -14,6 +14,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { CarsService } from 'src/app/core/services/cars/cars.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -31,6 +32,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class CreateComponent {
   navigator: any;
 
+  loading:boolean = false;
   // Incialización del formulario
   public registerCar: FormGroup;
   // variable submitted a false
@@ -48,11 +50,11 @@ export class CreateComponent {
     // Nuestro formulario - sin campos por defecto
     // Podemos meter valores por defecto en las comillas
     this.registerCar = this.formBuilder.group({
-      marca: ['', [Validators.required, Validators.maxLength(20)]],
+      marca: ['', [Validators.required, Validators.maxLength(28)]],
       modelo: ['', [Validators.required, Validators.maxLength(20)]],
       anio: ['', [Validators.required, Validators.maxLength(4)]],
       tipo: ['', [Validators.required]],
-      imagen: [''],
+      imagen: ['',[Validators.required]],
     });
   }
 
@@ -60,8 +62,6 @@ export class CreateComponent {
     const file: File = event.target.files[0];
     console.log(file, 61);
     this.registerCar.get('imagen')?.setValue(file);
-    console.log(this.registerCar.get('imagen')?.value, 63);
-    console.log(this.registerCar.value.imagen.name, 64);
   }
 
   //Función accionada al clickar en submit
@@ -78,10 +78,11 @@ export class CreateComponent {
         tipo: this.registerCar.get('tipo')?.value,
         imagen: this.registerCar.get('imagen')?.value,
       };
-      console.log(car, 94);
+      this.loading= true;
       this.carsservice.addCars(car).subscribe(
         (response) => {
           console.log('Datos enviados con éxito');
+          this.loading = false;
           this.snackBar.open(
             'El coche ha sido añadido correctamente',
             'Cerrar',
