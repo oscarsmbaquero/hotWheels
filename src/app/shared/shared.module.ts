@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LoadingComponent } from './loading/loading.component';
+import { LoadinTwoComponent } from './loading-two/loadin-two.component';
 
 
 @NgModule({
   declarations: [
-    LoadingComponent
+    LoadingComponent,
+    LoadinTwoComponent
   ],
   imports: [
    
     
   ],
   exports:[
-    LoadingComponent
+    LoadingComponent,
+    LoadinTwoComponent
   ],
   providers: [],
   
