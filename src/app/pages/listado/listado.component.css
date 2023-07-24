@@ -51,7 +51,7 @@ input[type="text"] {
   font-size: 18px; /* ajusta el tamaño a tu gusto */
 }
 .image{
-  border-radius: 55%;
+  border-radius: 75%;
   
 }
 .image :hover{

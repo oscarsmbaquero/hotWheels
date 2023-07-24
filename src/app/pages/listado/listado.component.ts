@@ -6,6 +6,7 @@ import { CarsService } from '../../core/services/cars/cars.service';
 import { map } from 'rxjs/operators';
 import { FavoriteCarsCountService } from '../../core/services/numberFavorite/number-favorite.service';
 import { Location } from '@angular/common';
+import * as AOS from 'aos';
 
 
 
@@ -32,6 +33,8 @@ export class ListadoComponent {
 
   ) { }
   ngOnInit(): void {
+
+    
     this.getCars();//lanzo la función al iniciar 
     this.carsservice.getNumberFavoriteCars().subscribe(count =>   {
       this.favoriteCarsCount = count;
@@ -42,7 +45,20 @@ export class ListadoComponent {
     this.usersService.getCurrentUser().subscribe(user => {
       this.userActive = user;
     });  
+    AOS.init({
+      duration: 1550,
+      delay: 550,
+    });
   }
+/**
+ * revisar y ajustar
+ */
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      AOS.refresh()
+    }, 500)
+  }
+  
   
   
   private getCars(textoDigitado?: string) {

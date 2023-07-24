@@ -13,14 +13,16 @@
     </div>
   </div>
   <div class="row">
-    <div *ngFor="let car of cars" class="col-md-3 col-12 mx-auto">
+    <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
       <mat-card class="example-card"  [ngStyle]="{ 'transform': tarjetaSeleccionada === car ? 'scale(1.1)' : 'scale(1)' }" (click)="hacerImagenGrande(car)">
         <mat-card-content>
           <div class="row">
             <!-- Primera columna: marca, modelo, año y tipo -->
             <div class="col-6">
-              <mat-card-title>{{ car.marca }}</mat-card-title>
-              <mat-card-subtitle>{{ car.modelo }}</mat-card-subtitle>
+              <mat-card-title>
+                <span style="background-color: #e01616; color: #eaf022; font-size: 14px; padding: 5px 8px; border-radius: 14px; margin-left: 55px;">{{car.marca}}</span>
+              </mat-card-title>
+              <mat-card-subtitle style="font-weight: bold;">{{ car.modelo }}</mat-card-subtitle>
               <p>{{ car.anio }}</p>
               <p>{{ car.tipo }}</p>
               <div *ngIf="userActive" class="d-flex align-items-center">
@@ -83,7 +85,7 @@
               </div> -->
             </div>
             <!-- Segunda columna: imagen -->
-            <div class="col-6">
+            <div class="col-6" style="border-radius: 50%;">
               <img
                 mat-card-md-image
                 src="{{ car.imagenUrl }} "
