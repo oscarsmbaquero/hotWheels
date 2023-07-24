@@ -2,7 +2,7 @@ import { ICar } from './../../core/services/models/cars-models';
 // import { TypeOfCar } from './../../core/services/models/cars-models';
 import { Router } from '@angular/router';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -13,6 +13,7 @@ import {
 import { trigger, transition, style, animate } from '@angular/animations';
 import { CarsService } from 'src/app/core/services/cars/cars.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as AOS from 'aos';
 
 
 @Component({
@@ -55,6 +56,13 @@ export class CreateComponent {
       anio: ['', [Validators.required, Validators.maxLength(4)]],
       tipo: ['', [Validators.required]],
       imagen: ['',[Validators.required]],
+    });
+  }
+
+  ngOnInit() {
+    AOS.init({
+      duration: 1550,
+      delay: 550,
     });
   }
 

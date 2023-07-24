@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IUser } from '../../services/models/user-models';
-
+import * as AOS from 'aos';
 
 import { Router } from '@angular/router';
 import {
@@ -36,6 +36,12 @@ export class LoginComponent {
     });
   }
   
+  ngOnInit() {
+    AOS.init({
+      duration: 1550,
+      delay: 550,
+    });
+  }
 
   public onSubmit(): void {
     // El usuario ha pulsado en submit->cambia a true submitted
