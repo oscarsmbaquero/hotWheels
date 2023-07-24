@@ -97,6 +97,62 @@
       </mat-card>
     </div>
   </div>
+  <div *ngIf="cars; else loading">
+    <!-- <div class="row">
+      <div class="col-11">
+        <div class="search-container">
+          <input
+            type="text"
+            (keyup)="capturarTexto($event)"
+            class="input"
+            placeholder="&nbsp;Buscar..."
+          />
+          <i class="fa fa-search search-icon"></i>
+        </div>
+      </div>
+    </div> -->
+    <div class="row" style="margin-top: 25px;">
+      <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
+        <div class="card bg-dark text-dark" style="margin-bottom: 25px; position: relative;">
+          <img src="{{ car.imagenUrl }} " class="card-img" alt="Stony Beach"/>
+          <div class="card-img-overlay">
+            <h4><span class="card">{{car.marca}}</span></h4>
+            <h5><span class="card">{{car.anio}}</span></h5>
+            <h6><span class="card">{{car.tipo}}</span></h6>
+            <!-- {{car.anio}}
+            <p class="card-text">{{car.tipo}}</p> -->
+          </div>
+          <div *ngIf="userActive" class="d-flex align-items-center" style="position: absolute; bottom: 0; left: 0; right: 0;">
+            <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
+              <button (click)="favorite(car._id)" class="button">
+                <span class="material-icons icon-lg" style="color: rgb(255, 0, 0)">favorite</span>
+              </button>
+            </div>
+            <ng-template #Notfavorite>
+              <div class="mr-3">
+                <button (click)="favorite(car._id)" class="button">
+                  <span class="material-icons icon-lg" style="color: rgb(252, 250, 250) " >favorite</span>
+                </button>
+              </div>
+            </ng-template>
+            <div class="mr-3">
+              <button class="button" (click)="delete(car._id)">
+                <span class="material-icons icon-lg" style="color: #4a38d3">delete</span>
+              </button>
+            </div>
+            <!-- <div class="mr-3">
+              <span class="material-icons icon-lg" style="color: #2196f3">edit</span>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+  
 </div>
 <ng-template #loading>
   <app-loading></app-loading>

@@ -14,7 +14,7 @@
   margin-left: 20px;
 }
 .app-search {
-  max-width: 100%;  
+  max-width: 100%;
 }
 .input{
   width: 250px;
@@ -52,7 +52,7 @@ input[type="text"] {
 }
 .image{
   border-radius: 55%;
-  
+
 }
 .image :hover{
   width: 60px;
@@ -64,4 +64,19 @@ input[type="text"] {
 
 .example-card.imagen-grande .image {
   width: 200%;
+}
+
+.card{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background-color: transparent;
+  border:none;
+  font-weight: bold;
+  color: rgb(12, 4, 4);
+  font-size: 22px;
+ 
+}
+.icon-lg {
+  font-size: 36px; /* Ajusta el tamaño de la fuente para hacer los iconos más grandes */
 }
