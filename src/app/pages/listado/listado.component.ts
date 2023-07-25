@@ -18,10 +18,15 @@ import * as AOS from 'aos';
 export class ListadoComponent {
 
   public cars?: ICar[];
-  favoriteCarsCount: number =0;
+  //contador de coches favoritos
+  favoriteCarsCount: number = 0;
+  //user activo
   userActive: any;
+  //ampliar imagen
   imagenGrande: boolean = false;
+  //coche seleccionado
   carSelected: any = null;
+
   tarjetaSeleccionada: any = null;
 
   constructor(
@@ -58,6 +63,17 @@ export class ListadoComponent {
       AOS.refresh()
     }, 500)
   }
+
+  iconos: { [key: string]: string } = {
+    Chevrolet: '/assets/iconos/chevrolet.jpg',
+    ford: '/assets/iconos/ford.png',
+    personal: '/assets/iconos/personal.png',
+    coche:'/assets/iconos/coche.png',
+    sua:'/assets/iconos/sua.jpg',
+    otro:'/assets/iconos/otro.png',
+    eliminar:'/assets/iconos/borrar.jpg',
+    // Agrega más tipos de gasto y sus iconos correspondientes
+  };
   
   
   
@@ -76,12 +92,19 @@ export class ListadoComponent {
       });
     }
   }
-  
+  /**
+   * Texto introducido en el input
+   * @param event 
+   */
   capturarTexto(event: any) {
     let textoDigitado = event.target.value;
     this.getCars(textoDigitado);
   }
 
+  /**
+   * Seleccionar favorito
+   * @param id 
+   */
   favorite(id: string) {
     const car = this.cars?.find(car => car._id === id);
     if (car) {
@@ -105,16 +128,10 @@ export class ListadoComponent {
       }
     }
   }
-
-// delete(id:string){
-//   this.carsservice.deleteCar(id).subscribe((response)=>{
-//     console.log(response)
-    
-//   });
-//   this.router.navigate(['home']);
-// }  
-  
-
+/**
+ * Función para eliminar coches
+ * @param id 
+ */
 delete(id: string): void {
   const confirmation = window.confirm('¿Estás seguro de que deseas eliminar este coche?');
 
@@ -125,6 +142,11 @@ delete(id: string): void {
     });
   }
 }
+
+/**
+ * 
+ * @param car 
+ */
 hacerImagenGrande(car:ICar){
   if (this.tarjetaSeleccionada === car) {
     this.tarjetaSeleccionada = null; // Volver al tamaño original

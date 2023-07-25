@@ -84,3 +84,6 @@ input[type="text"] {
 .icon-lg {
   font-size: 36px; /* Ajusta el tamaño de la fuente para hacer los iconos más grandes */
 }
+.icono {
+  width: 105px;
+}
