@@ -72,10 +72,20 @@ input[type="text"] {
   align-items: center; */
   background-color: transparent;
   border:none;
+  margin-left: 15px;
   font-weight: bold;
-  color: rgb(12, 4, 4);
-  font-size: 22px;
- 
+  color: rgb(12, 4, 4); 
+}
+
+.cardTipo{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background-color: transparent;
+  border:none;
+  margin-left: 10px;
+  font-weight: bold;
+  color: rgb(12, 4, 4); 
 }
 .icon-lg {
   font-size: 36px; /* Ajusta el tamaño de la fuente para hacer los iconos más grandes */

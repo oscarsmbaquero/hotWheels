@@ -1,3 +1,64 @@
+<!--START PRIMER VERSION DE TARJETAS-->
+<!-- <div class="row">
+  <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
+    <mat-card class="example-card"  [ngStyle]="{ 'transform': tarjetaSeleccionada === car ? 'scale(1.1)' : 'scale(1)' }" (click)="hacerImagenGrande(car)">
+      <mat-card-content>
+        <div class="row">
+          <div class="col-6">
+            <mat-card-title>
+              <span style="background-color: #e01616; color: #eaf022; font-size: 14px; padding: 5px 8px; border-radius: 14px; margin-left: 55px;">{{car.marca}}</span>
+            </mat-card-title>
+            <mat-card-subtitle style="font-weight: bold;">{{ car.modelo }}</mat-card-subtitle>
+            <p>{{ car.anio }}</p>
+            <p>{{ car.tipo }}</p>
+            <div *ngIf="userActive" class="d-flex align-items-center">
+              <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
+                <button (click)="favorite(car._id)" class="button">
+                  <span class="material-icons" style="color: rgb(255, 0, 0)"
+                    >favorite</span
+                  >
+                </button>
+              </div>
+              <ng-template #Notfavorite>
+                <div class="mr-3">
+                  <button (click)="favorite(car._id)" class="button">
+                    <span
+                      class="material-icons"
+                      style="color: rgb(192, 181, 181)"
+                      >favorite</span
+                    >
+                  </button>
+                </div>
+              </ng-template>
+              <div class="mr-3">
+                <button class="button" (click)="delete(car._id)">
+                  <span class="material-icons" style="color: #4a38d3"
+                  >delete</span
+                >
+                </button>
+                
+              </div>
+              <div class="mr-3">
+                <span class="material-icons" style="color: #2196f3"
+                  >edit</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-6" style="border-radius: 50%;">
+            <img
+              mat-card-md-image
+              src="{{ car.imagenUrl }} "
+              class="image"
+            />
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div> -->
+<!-- PRIMER VERSION DE TARJETAS-->
+
 <div *ngIf="cars; else loading">
   <div class="row">
     <div class="col-11">
@@ -12,142 +73,47 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
-      <mat-card class="example-card"  [ngStyle]="{ 'transform': tarjetaSeleccionada === car ? 'scale(1.1)' : 'scale(1)' }" (click)="hacerImagenGrande(car)">
-        <mat-card-content>
-          <div class="row">
-            <!-- Primera columna: marca, modelo, año y tipo -->
-            <div class="col-6">
-              <mat-card-title>
-                <span style="background-color: #e01616; color: #eaf022; font-size: 14px; padding: 5px 8px; border-radius: 14px; margin-left: 55px;">{{car.marca}}</span>
-              </mat-card-title>
-              <mat-card-subtitle style="font-weight: bold;">{{ car.modelo }}</mat-card-subtitle>
-              <p>{{ car.anio }}</p>
-              <p>{{ car.tipo }}</p>
-              <div *ngIf="userActive" class="d-flex align-items-center">
-                <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
-                  <button (click)="favorite(car._id)" class="button">
-                    <span class="material-icons" style="color: rgb(255, 0, 0)"
-                      >favorite</span
-                    >
-                  </button>
-                </div>
-                <ng-template #Notfavorite>
-                  <div class="mr-3">
-                    <button (click)="favorite(car._id)" class="button">
-                      <span
-                        class="material-icons"
-                        style="color: rgb(192, 181, 181)"
-                        >favorite</span
-                      >
-                    </button>
-                  </div>
-                </ng-template>
-                <div class="mr-3">
-                  <button class="button" (click)="delete(car._id)">
-                    <span class="material-icons" style="color: #4a38d3"
-                    >delete</span
-                  >
-                  </button>
-                  
-                </div>
-                <!-- <div class="mr-3">
-                  <span class="material-icons" style="color: #2196f3"
-                    >edit</span
-                  >
-                </div> -->
-              </div>
-
-              <!-- <div *ngIf="userActive">
-                <div *ngIf="car.favorite; else Notfavorite">
-                  <button (click)="favorite(car._id)" class="button">
-                    <span class="material-icons" style="color: rgb(255, 0, 0)"
-                      >favorite</span
-                    >
-                  </button>
-                </div>
-                <ng-template #Notfavorite>
-                  <div>
-                    <button (click)="favorite(car._id)" class="button">
-                      <span
-                        class="material-icons"
-                        style="color: rgb(192, 181, 181)"
-                        >favorite</span
-                      >
-                    </button>
-                  </div>
-                </ng-template>
-                <div>
-                  <i class="fas fa-trash" style="color: rgb(255, 0, 0)"></i>
-                </div>
-                
-              </div> -->
-            </div>
-            <!-- Segunda columna: imagen -->
-            <div class="col-6" style="border-radius: 50%;">
-              <img
-                mat-card-md-image
-                src="{{ car.imagenUrl }} "
-                class="image"
-              />
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+ 
   <div *ngIf="cars; else loading">
-    <!-- <div class="row">
-      <div class="col-11">
-        <div class="search-container">
-          <input
-            type="text"
-            (keyup)="capturarTexto($event)"
-            class="input"
-            placeholder="&nbsp;Buscar..."
-          />
-          <i class="fa fa-search search-icon"></i>
-        </div>
-      </div>
-    </div> -->
-    <div class="row" style="margin-top: 25px;">
-      <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
-        <div class="card bg-dark text-dark" style="margin-bottom: 25px; position: relative;">
-          <img src="{{ car.imagenUrl }} " class="card-img" alt="Stony Beach"/>
-          <div class="card-img-overlay">
-            <h4><span class="card">{{car.marca}}</span></h4>
-            <h5><span class="card">{{car.anio}}</span></h5>
-            <h6><span class="card">{{car.tipo}}</span></h6>
-            <!-- {{car.anio}}
-            <p class="card-text">{{car.tipo}}</p> -->
+   <div class="row" style="margin-top: 25px;">
+  <div *ngFor="let car of cars; let i = index" class="col-md-3 col-12 mx-auto" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'">
+    <div class="card bg-dark text-dark" style="margin-bottom: 25px; position: relative;">
+      <img src="{{ car.imagenUrl }}" class="card-img" alt="Stony Beach" />
+      <div class="card-img-overlay">
+        <!-- Datos en la parte inferior de la tarjeta -->
+        <div class="d-flex flex-column align-items-center h-100">
+          <div style="margin-top: auto;">
+            <mat-card-title>
+              <span style="background-color: #e01616; color: #eaf022; font-size: 14px; padding: 5px 8px; border-radius: 14px;">{{car.marca}}</span>
+            </mat-card-title>
+            <mat-card-subtitle style="font-weight: bold;">{{ car.modelo }}&nbsp;{{ car.anio }}</mat-card-subtitle>
+            <span style="background-color: #eaf022; color: #e04616; font-size: 14px; padding: 5px 8px; border-radius: 14px;">{{car.tipo}}</span>
           </div>
-          <div *ngIf="userActive" class="d-flex align-items-center" style="position: absolute; bottom: 0; left: 0; right: 0;">
+          <div *ngIf="userActive" class="d-flex align-items-center mt-3">
             <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
-              <button (click)="favorite(car._id)" class="button">
+              <button (click)="favorite(car._id)" class="button btn-square">
                 <span class="material-icons icon-lg" style="color: rgb(255, 0, 0)">favorite</span>
               </button>
             </div>
             <ng-template #Notfavorite>
               <div class="mr-3">
-                <button (click)="favorite(car._id)" class="button">
-                  <span class="material-icons icon-lg" style="color: rgb(252, 250, 250) " >favorite</span>
+                <button (click)="favorite(car._id)" class="button btn-square">
+                  <span class="material-icons icon-lg" style="color: rgb(252, 250, 250)">favorite</span>
                 </button>
               </div>
             </ng-template>
             <div class="mr-3">
-              <button class="button" (click)="delete(car._id)">
+              <button class="button btn-square" (click)="delete(car._id)">
                 <span class="material-icons icon-lg" style="color: #4a38d3">delete</span>
               </button>
             </div>
-            <!-- <div class="mr-3">
-              <span class="material-icons icon-lg" style="color: #2196f3">edit</span>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
-    
+  </div>
+</div>
+  
   </div>
   <ng-template #loading>
     <app-loading></app-loading>
