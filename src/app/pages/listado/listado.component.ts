@@ -69,8 +69,10 @@ export class ListadoComponent {
     ford: '/assets/iconos/ford.png',
     tesla: '/assets/iconos/tesla.jpg',
     bmw: '/assets/iconos/bmw.jpg',
-    bugati: '/assets/iconos/bugatti.jpg',
-    mclaren: '/assets/iconos/mclaren.svg'
+    bugati: '/assets/iconos/bugatti.svg',
+    mclaren: '/assets/iconos/mclaren.svg',
+    jeep: '/assets/iconos/jeep.svg',
+    pagani: '/assets/iconos/pagani.jpg',
   };
   
   

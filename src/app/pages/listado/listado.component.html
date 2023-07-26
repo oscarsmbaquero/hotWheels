@@ -86,15 +86,13 @@
         >
           <img src="{{ car.imagenUrl }}" class="card-img" alt="Stony Beach" />
           <!-- Datos en la parte inferior de la tarjeta -->
-          <div class="card-body d-flex flex-column align-items-center" style="height: 100%">
-            <mat-card-title>
+          <div class="card-body d-flex align-items-center" style="height: 100%">
+            <!-- Column for the brand -->
+            <div class="d-flex flex-column align-items-center mr-3">
               <ng-container *ngIf="iconos[car.marca.toLowerCase()] as iconUrl; else notIcon">
-                <!-- Si el ícono existe en el objeto iconos, muestra la imagen del ícono -->
-                <img [src]="iconUrl" alt="Tipo de gasto" class="icono">
+                <img [src]="iconUrl" alt="Tipo de gasto" class="icono" />
               </ng-container>
-          
               <ng-template #notIcon>
-                <!-- Si el ícono no existe en el objeto iconos, muestra solo el nombre de la marca -->
                 <span
                   style="
                     /* background-color: #e01616; */
@@ -107,40 +105,46 @@
                   {{ car.marca }}
                 </span>
               </ng-template>
-            </mat-card-title>
-            <mat-card-subtitle style="font-weight: bold; color: antiquewhite">
-              {{ car.modelo }}&nbsp;{{ car.anio }}
-            </mat-card-subtitle>
-            <span
-              style="
-                background-color: #f4f4f1;
-                color: #0d0c0c;
-                font-size: 14px;
-                padding: 5px 8px;
-                border-radius: 14px;
-              "
-            >
-              {{ car.tipo }}
-            </span>
+            </div>
           
-            <!-- Botones en la parte inferior de la tarjeta -->
-            <div *ngIf="userActive" class="d-flex align-items-center justify-content-end mt-auto">
-              <div *ngIf="car.favorite; else Notfavorite" class="mr-3">
-                <button (click)="favorite(car._id)" class="button btn-square">
-                  <span class="material-icons icon-lg" style="color: rgb(255, 0, 0)">favorite</span>
-                </button>
-              </div>
-              <ng-template #Notfavorite>
-                <div class="mr-3">
+            <!-- Column for the rest of the data -->
+            <div class="d-flex flex-column">
+              <mat-card-title>
+                <mat-card-subtitle style="font-weight: bold; color: antiquewhite">
+                  {{ car.modelo }}&nbsp;{{ car.anio }}
+                </mat-card-subtitle>
+                <span
+                  style="
+                    background-color: #f4f4f1;
+                    color: #0d0c0c;
+                    font-size: 14px;
+                    padding: 5px 8px;
+                    border-radius: 14px;
+                  "
+                >
+                  {{ car.tipo }}
+                </span>
+              </mat-card-title>
+          
+              <!-- Botones en la parte inferior de la tarjeta -->
+              <div *ngIf="userActive" class="d-flex align-items-center justify-content-start">
+                <div *ngIf="car.favorite; else Notfavorite">
                   <button (click)="favorite(car._id)" class="button btn-square">
-                    <span class="material-icons icon-lg" style="color: rgb(252, 250, 250)">favorite</span>
+                    <span class="material-icons icon-lg" style="color: rgb(255, 0, 0)">favorite</span>
                   </button>
                 </div>
-              </ng-template>
-              <div class="mr-3">
-                <button class="button btn-square" (click)="delete(car._id)">
-                  <span class="material-icons icon-lg" style="color: #4a38d3">delete</span>
-                </button>
+                <ng-template #Notfavorite>
+                  <div>
+                    <button (click)="favorite(car._id)" class="button btn-square">
+                      <span class="material-icons icon-lg" style="color: rgb(252, 250, 250)">favorite</span>
+                    </button>
+                  </div>
+                </ng-template>
+                <div>
+                  <button class="button btn-square" (click)="delete(car._id)">
+                    <span class="material-icons icon-lg" style="color: #4a38d3">delete</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
