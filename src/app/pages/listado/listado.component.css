@@ -85,5 +85,7 @@ input[type="text"] {
   font-size: 36px; /* Ajusta el tamaño de la fuente para hacer los iconos más grandes */
 }
 .icono {
-  width: 105px;
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
 }

@@ -65,14 +65,12 @@ export class ListadoComponent {
   }
 
   iconos: { [key: string]: string } = {
-    Chevrolet: '/assets/iconos/chevrolet.jpg',
+    chevrolet: '/assets/iconos/chevrolet.jpg',
     ford: '/assets/iconos/ford.png',
-    personal: '/assets/iconos/personal.png',
-    coche:'/assets/iconos/coche.png',
-    sua:'/assets/iconos/sua.jpg',
-    otro:'/assets/iconos/otro.png',
-    eliminar:'/assets/iconos/borrar.jpg',
-    // Agrega más tipos de gasto y sus iconos correspondientes
+    tesla: '/assets/iconos/tesla.jpg',
+    bmw: '/assets/iconos/bmw.jpg',
+    bugati: '/assets/iconos/bugatti.jpg',
+    mclaren: '/assets/iconos/mclaren.svg'
   };
   
   
