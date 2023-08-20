@@ -89,3 +89,6 @@ input[type="text"] {
   height: 120px;
   background-color: transparent;
 }
+.custom-class{
+  padding: 14px;
+}

@@ -73,6 +73,10 @@ export class ListadoComponent {
     mclaren: '/assets/iconos/mclaren.svg',
     jeep: '/assets/iconos/jeep.svg',
     pagani: '/assets/iconos/pagani.jpg',
+    astonmartin: '/assets/iconos/aston-martin.png',
+    dodge:'/assets/iconos/dodge.jpg',
+    lotus:'/assets/iconos/lotus.png',
+    lamborghini:'/assets/iconos/lamborghini.jpg'
   };
   
   
@@ -153,6 +157,10 @@ hacerImagenGrande(car:ICar){
   } else {
     this.tarjetaSeleccionada = car; // Ampliar la tarjeta seleccionada
   }
+}
+
+formatBrand(marca: string): string {
+  return marca.toLowerCase().replace(/\s/g, '');
 }
 }
 
